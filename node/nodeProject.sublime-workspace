@@ -1,0 +1,337 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 69,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "simpleserver.js",
+			"settings":
+			{
+				"buffer_size": 345,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "helloworld.js",
+			"settings":
+			{
+				"buffer_size": 29,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"set syntax xml",
+				"Set Syntax: XML"
+			],
+			[
+				"set syntax C#",
+				"Set Syntax: C#"
+			],
+			[
+				"set syntax c",
+				"Set Syntax: C#"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"set syntax xm",
+				"Set Syntax: XML"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/eiu/SkyDrive/Dokumenter/Programmering/node/server.js",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Programmering/node/helloworld.js",
+		"/C/ServiceTest/Services/MapCatalogService/Templates/WorldMap.template.xml",
+		"/C/ServiceTest/Services/MapCatalogService/Templates/Norway.template.xml",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012MapCacheService/TPG.GeoFramework.CacheService.Service.exe.config",
+		"/C/ServiceTest/Maps/elevation.rastermappackages.xml",
+		"/C/ServiceTest/Services/MapCatalogService/Templates/BlueMarble.template.xml",
+		"/C/ServiceTest/Maps/all.rastermappackages.xml",
+		"/C/Users/eiu/Desktop/kml/2.2.0/ogckml22.xsd",
+		"/C/tfs/globe-dev4/Branches/Development/MariaNG1.0/Src/.nuget/NuGet.Config",
+		"/C/Users/eiu/Desktop/MapViewModel.cs",
+		"/C/Users/eiu/AppData/Local/Temp/7zOE23.tmp/TPG.GeoFramework.Contracts.xml",
+		"/C/tfs/globe-dev4/Branches/Development/MariaNG1.0/Src/.nuget/NuGet.targets",
+		"/C/ServiceTest/Services/MapCatalogService/Templates/Spain.template.xml",
+		"/C/ServiceTest/Services/MapCatalogService/Templates/Vmap0.template.xml",
+		"/C/ServiceTest/Maps/Spain.bookmarks.xml",
+		"/C/Users/eiu/Desktop/DrawObjectViewModel.cs",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/c6fae6b4-95cb-4ff2-8c11-abfe574d5421.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/98ddc833-27ae-49bb-89cf-db00a53a5202.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/77317c33-070c-43a4-bac4-4cc1b0bfd3ed.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/904548bd-04dd-47ed-a7a6-529b072f4487.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/b96b95ca-1137-4088-91cf-3aa2325743d5.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/bfb9adfb-fe55-43a3-9752-cfd36dd6a21e.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/cc83149a-1554-473f-8dc9-06442f4a8ea0.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/dac9238f-663e-4ecd-abbc-f38baa217e97.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/e3a63727-5a3e-4e5d-974e-ebc74cc36ebf.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/efd6c4e5-aa1e-44aa-9d39-f5791986e6dc.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/fdfc20a9-d527-450b-abc8-3b63bedf1e15.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/fec4c3fd-3a00-4177-bcc5-06c722a94971.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/7017d27e-c54c-411a-8ddf-16021bb24277.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/3bb827d9-016e-48b1-a95c-13ae60f1054f.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/33a3c1be-bd57-45b7-8841-a2c79a35f30b.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/31d79203-1f43-4277-a83e-e78b959aa141.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/83c769ea-9ac2-4a3d-b0b8-55732dea4883.xml",
+		"/C/Users/eiu/Documents/Visual Studio 2013/Projects/WindowsFormsApplication1/WindowsFormsApplication1/App.config",
+		"//192.168.1.14/Share/snippets/Tasks.txt",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/329c87b7-2b1e-48bf-bc6b-fb86f9111443.xml",
+		"/C/Users/eiu/SkyDrive/Dokumenter/Teleplan/MadridTopfas2013/GeoDevelopmentKit/GettingStarted/TestMapApp/bin/Debug/Data/7e958a86-276a-4f35-8fd1-ace7f2daea20.xml",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012LocationService/TPG.GeoFramework.LocationService.Service.exe.config",
+		"/C/tfs/globe-dev4/Branches/Development/MariaNG1.0/Src/Hosts/MariaNGTester/bin/Debug/MariaNGTester.exe.config",
+		"/C/tfs/globe-dev4/Branches/Development/MariaNG1.0/Src/Maria/Hosts/MariaApplication/bin/Release/MariaApplication.exe.config",
+		"//192.168.1.14/Share/snippets/Workflows.txt",
+		"//192.168.1.14/Share/snippets/Style.txt",
+		"//192.168.1.14/Share/snippets/Grids.txt",
+		"//192.168.1.14/Share/snippets/Tools.txt",
+		"/C/Users/eiu/Desktop/ServiceTest/Services/MapCatalogService/Templates/Spain.template.xml",
+		"/C/Users/eiu/Desktop/ServiceTest/Maps/all.rastermappackages.xml",
+		"/C/Users/eiu/Desktop/ServiceTest/Maps/Spain.m6mmappackage.xml",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012MapCatalogService/TPG.GeoFramework.MapCatalogService.Service.exe.config",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012MapService/TPG.GeoFramework.MapService.Service.exe.config",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012PorpagationService/TPG.GeoFramework.PropagationService.Service.exe.config",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012RasterMapService/TPG.GeoFramework.RasterMapService.Service.exe.config",
+		"/C/Program Files (x86)/TeleplanGlobe/Maria2012TrackService/TPG.GeoFramework.TrackService.Service.exe.config",
+		"//192.168.1.14/Share/Maps/norsk.rastermappackages.xml",
+		"//192.168.1.14/Share/Maps/Composite.bookmarks.xml",
+		"//192.168.1.14/Share/Maps/Composite.m6mmappackage.xml",
+		"/C/ServiceTest/Maps/Composite.m6mmappackage.xml",
+		"//192.168.1.14/Share/Maps/elevation.rastermappackages.xml",
+		"//192.168.1.14/Share/Maps/Spain.m6mmappackage.xml",
+		"//192.168.1.14/Share/Maps/all.rastermappackages.xml",
+		"//192.168.1.14/Share/Services/MapCatalogService/Templates/Vmap0.template.xml",
+		"//192.168.1.14/Share/Services/MapCatalogService/Templates/WorldMap.template.xml",
+		"/C/ServiceTest/Maps/MGCPcomposite.m6mmappackage.xml",
+		"/C/ServiceTest/Maps/RasterMaps.xml",
+		"/C/tfs/globe-dev4/Branches/Development/MariaNG1.0/Src/Hosts/TPG.Hosts.SimpleDrawObjectServiceHost/bin/Release/SimpleDrawObjectServiceHost.exe.config",
+		"//192.168.1.14/Share/App.config",
+		"/C/Windows/System32/drivers/etc/hosts"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"MultiGeometryType",
+			"AbstractGeometryGroup",
+			"placemark",
+			"MapLayer",
+			"DrawObjectLayer"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"_mapLayer",
+			"_drawObjectLayer"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server.js",
+					"settings":
+					{
+						"buffer_size": 69,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								69,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "simpleserver.js",
+					"settings":
+					{
+						"buffer_size": 345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								345,
+								345
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "helloworld.js",
+					"settings":
+					{
+						"buffer_size": 29,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
