@@ -1,9 +1,12 @@
+var debug = require('debug')('choresapp');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var sqlite3 = require("sqlite3").verbose();
+var fs = require("fs");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -26,6 +29,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/test', test);
+
+// Check for database, create if does not exist.
+debug('Checking if database exists, create it if not.')
+var db = new sqlite3.Database("store.sqlite");
+fs.exists("store.qslite", function(exists){
+  db.serialize(function() {
+    if(!exists) {
+      db.run("CREATE TABLE User (Id	TEXT,Name	TEXT,Groups	TEXT,PRIMARY KEY(Id))");
+      db.run("CREATE TABLE Chore (Id	TEXT,Name	TEXT,Description	TEXT, Points INTEGER,PRIMARY KEY(Id))");
+      db.run("CREATE TABLE CompletedChores (Id	TEXT, User TEXT,DateCompleted	TEXT,PRIMARY KEY(Id))");
+    }
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
