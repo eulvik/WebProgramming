@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res) {
   debug('test called');
-  res.render('test', { title: 'Test shit' });
+  res.render('test', { title: 'Test shit', name: 'Eirik', names: ['Nils', 'Petter', 'Jens'] });
 });
 
 module.exports = router;
