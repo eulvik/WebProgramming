@@ -11,6 +11,7 @@ var fs = require("fs");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var test = require('./routes/test');
+var db = require('./db.js');
 
 var app = express();
 
@@ -30,18 +31,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/test', test);
 
-// Check for database, create if does not exist.
-debug('Checking if database exists, create it if not.')
-var db = new sqlite3.Database("store.sqlite");
-fs.exists("store.qslite", function(exists){
-  db.serialize(function() {
-    if(!exists) {
-      db.run("CREATE TABLE User (Id	TEXT,Name	TEXT,Groups	TEXT,PRIMARY KEY(Id))");
-      db.run("CREATE TABLE Chore (Id	TEXT,Name	TEXT,Description	TEXT, Points INTEGER,PRIMARY KEY(Id))");
-      db.run("CREATE TABLE CompletedChores (Id	TEXT, User TEXT,DateCompleted	TEXT,PRIMARY KEY(Id))");
-    }
-  });
-});
+var conn = db.getConnection();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
