@@ -9,7 +9,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var test = require('./routes/test');
+<<<<<<< HEAD
 var db = require('./db');
+=======
+var db = require('./db.js');
+>>>>>>> bb0072f491e9175848da944ea671f48cd99ff943
 
 var app = express();
 
@@ -29,7 +33,11 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/test', test);
 
+<<<<<<< HEAD
 db.createConnection();
+=======
+var conn = db.getConnection();
+>>>>>>> bb0072f491e9175848da944ea671f48cd99ff943
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
