@@ -1,5 +1,6 @@
 using Microsoft.AspNet.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using TheWorld.Services;
 
 namespace TheWorldCode
 {
@@ -10,6 +11,11 @@ namespace TheWorldCode
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+        #if DEBUG
+            services.AddScoped<IMailService, DebugMailService>();
+        #else
+            services.AddScoed<IMailService, RealMailService>();
+        #endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
