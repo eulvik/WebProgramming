@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Mvc;
 using TheWorld.Services;
 using TheWorld.ViewModels;
+using TheWorldCode;
 
 namespace TheWorld.Controllers.Web
 {
@@ -32,11 +33,26 @@ namespace TheWorld.Controllers.Web
         [HttpPost]
         public IActionResult Contact(ContactViewModel contactViewModel)
         {
-            _mailService.SendMail(
-                "", "", 
-                $"Contact Page from {contactViewModel.Name} ({contactViewModel.Email})", 
-                contactViewModel.Message);
+            if(ModelState.IsValid)
+            {
+                var email = Startup.Configuration["AppSettings:SiteEmailAddress"];
                 
+                if(string.IsNullOrWhiteSpace(email))
+                {
+                    ModelState.AddModelError("", "Could not send email. Configuration problem");
+                }
+                
+                if(_mailService.SendMail(
+                    email, email, 
+                    $"Contact Page from {contactViewModel.Name} ({contactViewModel.Email})", 
+                    contactViewModel.Message))
+                    {
+                        ModelState.Clear();
+                        
+                        ViewBag.Message = "Mail Sent. Thanks";
+                    }
+            } 
+            
             return View();
         }
     }
