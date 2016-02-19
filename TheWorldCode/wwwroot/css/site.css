@@ -17,7 +17,7 @@ input[type=submit] {
     width: auto;
 }
 
-#main {
+/*#main {
     background-color: #eee;
     padding: 4px;
     padding: 4px;
@@ -30,7 +30,7 @@ input[type=submit] {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
+}*/
 
 .profile-pic {
     width: 50px;
