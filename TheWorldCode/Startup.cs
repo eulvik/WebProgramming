@@ -28,6 +28,10 @@ namespace TheWorldCode
             
             services.AddEntityFramework().AddSqlServer().AddDbContext<WorldContext>();
             
+            services.AddTransient<WorldContextSeedData>();
+            
+            services.AddScoped<IWorldRepository, WorldRepository>();
+            
         #if DEBUG
             services.AddScoped<IMailService, DebugMailService>();
         #else
@@ -36,7 +40,7 @@ namespace TheWorldCode
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, WorldContextSeedData seeder)
         {
             app.UseStaticFiles();
             
@@ -47,6 +51,8 @@ namespace TheWorldCode
                     defaults: new { controller = "App", action = "Index"}
                 );
             });
+            
+            seeder.EnsureSeedData();
         }
 
         // Entry point for the application.
