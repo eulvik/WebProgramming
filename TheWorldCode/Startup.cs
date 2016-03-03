@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using TheWorld.Services;
 using TheWorld.Models;
+using Microsoft.Extensions.Logging;
 
 namespace TheWorldCode
 {
@@ -25,7 +26,7 @@ namespace TheWorldCode
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+            services.AddLogging();
             services.AddEntityFramework().AddSqlServer().AddDbContext<WorldContext>();
             
             services.AddTransient<WorldContextSeedData>();
@@ -40,8 +41,9 @@ namespace TheWorldCode
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, WorldContextSeedData seeder)
+        public void Configure(IApplicationBuilder app, WorldContextSeedData seeder, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(LogLevel.Warning);
             app.UseStaticFiles();
             
             app.UseMvc(config => {
