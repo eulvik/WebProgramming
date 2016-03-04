@@ -18,9 +18,7 @@ namespace TheWorld.Models
         {
             var connString = Startup.Configuration["Data:WorldContextConnection"];
             
-            optionsBuilder.UseSqlServer(connString);
-            
-            
+            optionsBuilder.UseSqlite(connString);
             base.OnConfiguring(optionsBuilder);
         }
     }

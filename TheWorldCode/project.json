@@ -14,7 +14,7 @@
     "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",
     "Microsoft.Framework.Configuration": "1.0.0-beta8",
     "EntityFramework.Commands": "7.0.0-rc1",
-    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1",
+    "EntityFramework.SQLite": "7.0.0-rc1",
     "Microsoft.Extensions.Logging.Debug" : "1.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Console" : "1.0.0-rc1-final"
   },

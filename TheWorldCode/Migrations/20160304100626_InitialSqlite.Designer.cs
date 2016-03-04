@@ -8,14 +8,13 @@ using TheWorld.Models;
 namespace TheWorldCode.Migrations
 {
     [DbContext(typeof(WorldContext))]
-    [Migration("20160226130452_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20160304100626_InitialSqlite")]
+    partial class InitialSqlite
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "7.0.0-rc1-16348");
 
             modelBuilder.Entity("TheWorld.Models.Stop", b =>
                 {

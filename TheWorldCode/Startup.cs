@@ -31,7 +31,10 @@ namespace TheWorldCode
                 opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
             services.AddLogging();
-            services.AddEntityFramework().AddSqlServer().AddDbContext<WorldContext>();
+            
+            services.AddEntityFramework()
+                    .AddSqlite()
+                    .AddDbContext<WorldContext>();
             
             services.AddTransient<WorldContextSeedData>();
             
