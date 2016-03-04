@@ -3,6 +3,9 @@ using Microsoft.Extensions.Logging;
 using TheWorld.Models;
 using TheWorld.ViewModels;
 using System.Net;
+using AutoMapper;
+using System;
+using System.Collections.Generic;
 
 namespace TheWorld.Controllers.Api
 {
@@ -21,27 +24,34 @@ namespace TheWorld.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var results = _repository.GetAllTripsWithStops();
+            var results = Mapper.Map<IEnumerable<TripViewModel>>(_repository.GetAllTripsWithStops());
             return Json(results);
         }
         
         [HttpPost("")]
-        public JsonResult Post([FromBody]TripViewModel newTrip)
+        public JsonResult Post([FromBody]TripViewModel vm)
         {
-            if(newTrip == null)
+            try
             {
-                _logger.LogError("newTrip is null");
-                return Json(false);
+                if(ModelState.IsValid)
+                {
+                    var newTrip = Mapper.Map<Trip>(vm);
+                    //Save to database
+                    _logger.LogDebug("Attempting to save a new trip");
+                    _repository.AddTrip(newTrip);
+                    if(_repository.SaveAll())
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.Created;         
+                        return Json(Mapper.Map<TripViewModel>(newTrip));
+                    }
+                }
             }
-            else
-                _logger.LogDebug($"Got a trip with name: {newTrip.Name}");
-            
-            if(ModelState.IsValid)
+            catch(Exception e)
             {
-                Response.StatusCode = (int)HttpStatusCode.Created;         
-                return Json(true);
+                _logger.LogError("Failed to save new trip", e);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = e.Message});
             }
-            
             
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new {Message = "Failed", ModelState = ModelState});

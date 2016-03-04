@@ -16,7 +16,20 @@ namespace TheWorld.Models
             _context = context;
             _logger = logger;
         }
-        
+
+        public void AddStop(Stop newStop, string tripName)
+        {
+            var theTrip = GetTripByName(tripName);
+            newStop.Order = theTrip.Stops.Max(s => s.Order) + 1;
+            theTrip.Stops.Add(newStop);
+            _context.Add(newStop);
+        }
+
+        public void AddTrip(Trip newTrip)
+        {
+            _context.Add(newTrip);
+        }
+
         public IEnumerable<Trip> GetAllTrips()
         {
             try
@@ -41,6 +54,19 @@ namespace TheWorld.Models
                 _logger.LogError("Could not get trips with stops from database", e);
                 return null;
             }
+        }
+
+        public Trip GetTripByName(string tripName)
+        {
+            _logger.LogInformation($"Looking up trip with name {tripName}");
+            return _context.Trips.Include(t => t.Stops).Where(t => t.Name == tripName).FirstOrDefault();
+        }
+
+        public bool SaveAll()
+        {
+            int changes = _context.SaveChanges();
+            _logger.LogInformation($"Saved {changes} changes");
+            return changes > 0;
         }
     }
 }

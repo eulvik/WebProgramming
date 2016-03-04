@@ -3,6 +3,6 @@
         "SiteEmailAddress": "me@aol.com"
     },
     "Data": {
-      "WorldContextConnection": "Data Source=c:\\temp\\mydb.db"  
+      "WorldContextConnection": "Data Source=mydb.db"  
     }
 }

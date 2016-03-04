@@ -6,6 +6,8 @@ using TheWorld.Services;
 using TheWorld.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using TheWorld.ViewModels;
 
 namespace TheWorldCode
 {
@@ -35,7 +37,7 @@ namespace TheWorldCode
             services.AddEntityFramework()
                     .AddSqlite()
                     .AddDbContext<WorldContext>();
-            
+            services.AddScoped<CoordService>();
             services.AddTransient<WorldContextSeedData>();
             
             services.AddScoped<IWorldRepository, WorldRepository>();
@@ -50,9 +52,13 @@ namespace TheWorldCode
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, WorldContextSeedData seeder, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(LogLevel.Debug);
+            loggerFactory.AddConsole(LogLevel.Information);
             app.UseStaticFiles();
-            
+            Mapper.Initialize(config => 
+            {
+               config.CreateMap<Trip, TripViewModel>().ReverseMap();
+               config.CreateMap<Stop, StopViewModel>().ReverseMap();
+            });
             app.UseMvc(config => {
                 config.MapRoute(
                     name: "Default",
