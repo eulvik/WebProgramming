@@ -6,6 +6,7 @@ using TheWorldCode;
 using TheWorld.Models;
 using System.Linq;
 using System;
+using Microsoft.AspNet.Authorization;
 
 namespace TheWorld.Controllers.Web
 {
@@ -22,9 +23,14 @@ namespace TheWorld.Controllers.Web
         
         public IActionResult Index()
         {
+            return View();
+        }
+        
+        [Authorize]
+        public IActionResult Trips()
+        {
             var trips = _repository.GetAllTrips();
-            Console.WriteLine($"Found {trips.Count()} trips");
-            return View(trips);
+            return View(trips);   
         }
         
         public IActionResult About()

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using TheWorld.ViewModels;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace TheWorldCode
 {
@@ -33,6 +34,12 @@ namespace TheWorldCode
                 opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
             services.AddLogging();
+            services.AddIdentity<WorldUser, IdentityRole>(config => 
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/login";
+            }).AddEntityFrameworkStores<WorldContext>();
             
             services.AddEntityFramework()
                     .AddSqlite()
@@ -50,15 +57,19 @@ namespace TheWorldCode
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, WorldContextSeedData seeder, ILoggerFactory loggerFactory)
+        public async void Configure(IApplicationBuilder app, WorldContextSeedData seeder, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(LogLevel.Information);
             app.UseStaticFiles();
+            
+            app.UseIdentity();
+            
             Mapper.Initialize(config => 
             {
                config.CreateMap<Trip, TripViewModel>().ReverseMap();
                config.CreateMap<Stop, StopViewModel>().ReverseMap();
             });
+            
             app.UseMvc(config => {
                 config.MapRoute(
                     name: "Default",
@@ -66,8 +77,7 @@ namespace TheWorldCode
                     defaults: new { controller = "App", action = "Index"}
                 );
             });
-            
-            seeder.EnsureSeedData();
+            await seeder.EnsureSeedDataAsync();
         }
 
         // Entry point for the application.
