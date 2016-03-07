@@ -9,9 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TheWorld.Services;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Authorization;
 
 namespace TheWorld.Controllers.Api
 {
+    [Authorize]
     [Route("api/trips/{tripName}/stops")]
     public class StopController : Controller
     {
@@ -31,7 +33,7 @@ namespace TheWorld.Controllers.Api
         {
             try
             {
-                var results = _repository.GetTripByName(tripName);
+                var results = _repository.GetTripByName(tripName, User.Identity.Name);
                 if(results == null)
                     return Json("No trip found");
                     
@@ -67,7 +69,7 @@ namespace TheWorld.Controllers.Api
                     newStop.Latitude = coordResult.Latitude;
                     
                     //Save to database
-                    _repository.AddStop(newStop, tripName);
+                    _repository.AddStop(newStop, tripName, User.Identity.Name);
                     if(_repository.SaveAll())
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;
