@@ -3,9 +3,22 @@
     
     angular.module("app-trips").controller("tripEditorController", tripEditorController);
     
-    function tripEditorController() {
+    function tripEditorController($routeParams, $http) {
         var vm = this;
-        vm.name = "Eirik Ulvik"; 
+        vm.tripName = $routeParams.tripName;
+        vm.stops = [];
+        vm.errorMessage = "";
+        vm.isBusy = true;
+        
+        $http.get("/api/trips/"+vm.tripName+"/stops")
+                .then(function(response){
+                    angular.copy(response.data, vm.stops);
+                }, function(err){
+                    vm.errorMessage = "Failed to load data";
+                })
+                .finally(function(){
+                    vm.isBusy = false;
+                });
     }
     
 })();
