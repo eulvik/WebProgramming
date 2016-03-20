@@ -59,15 +59,18 @@ namespace TheWorld.Controllers.Api
                     //Map to entity
                     var newStop = Mapper.Map<Stop>(vm);
                     //Looking op LatLon
+                    _logger.LogInformation($"Looking up coordinates for {newStop.Name}");
                     var coordResult = await _coordService.Lookup(newStop.Name);
                     if(!coordResult.Success)
                     {
+                        _logger.LogInformation($"Could not resolve coorindates {coordResult.Message}");
                         Response.StatusCode = (int)HttpStatusCode.Created;
                         return Json(coordResult.Message);
                     }
                     newStop.Longitude = coordResult.Longitude;
                     newStop.Latitude = coordResult.Latitude;
                     
+                    _logger.LogInformation("Saving to database");
                     //Save to database
                     _repository.AddStop(newStop, tripName, User.Identity.Name);
                     if(_repository.SaveAll())
