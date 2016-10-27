@@ -26,11 +26,13 @@ export class AppComponent {
             }
         }).then(function (s) {
             server = s;
+            console.time("loadObjects");
             for (let i = 0; i < 1000; i++) {
                 let obj = getUniqueObject();
                 ids.push(obj);
                 server.testdata.update(obj);
             }
+            console.timeEnd("loadObjects");
         });
     };
     title = 'IndexedDb peformance tests.';
