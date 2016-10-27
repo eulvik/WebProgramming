@@ -1,0 +1,9 @@
+{
+    "editor.wrappingColumn": 0,
+    "files.exclude": {
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.js.map":{}
+    },
+}
