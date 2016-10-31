@@ -8,33 +8,135 @@ export class ComponentService {
     private n = 0;
 
     private server: any;
-    private ids: obj[] = [];
-    private elapsedMs;
+    public messages: string[] = [];
 
     constructor() {
         this.openConnection();
     }
 
-    public getNumber(): number {
-        return this.n;
+    public runScenarioAdd1KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd1KRetrive");
+        this.clearDatabase();
+        this.addObjects(1000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
     }
 
-    public clicked() {
-        console.time("loadObjects");
-        let t0 = performance.now();
-        for (let i = 0; i < 1000; i++) {
-            let obj = this.getUniqueObject();
-            this.ids.push(obj);
-            this.server.testdata.update(obj);
+    public runScenarioAdd10KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd10KRetrive");
+        this.clearDatabase();
+        this.addObjects(10000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
+    }
+
+
+    public runScenarioAdd20KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd20KRetrive");
+        this.clearDatabase();
+        this.addObjects(20000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
+    }
+
+    public runScenarioAdd30KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd30KRetrive");
+        this.clearDatabase();
+        this.addObjects(30000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
+    }
+
+    public runScenarioAdd40KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd40KRetrive");
+        this.clearDatabase();
+        this.addObjects(40000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
+    }
+
+    public runScenarioAdd50KRetrive() {
+        this.messages.push("Start Scenario runScenarioAdd50KRetrive");
+        this.clearDatabase();
+        this.addObjects(50000).then(ids => {
+            this.timeFetch(1000, ids);
+        })
+    }
+
+
+
+    private timeFetch(numFetches: number, ids: string[]) {
+        let maxIdx = ids.length - 1;
+        let indicesToFetch: number[] = [];
+        this.messages.push("Creating indices to fetch.")
+        for (let i = 0; i < numFetches; i++) {
+            indicesToFetch.push(Math.round(Math.random() * maxIdx));
         }
-        console.timeEnd("loadObjects");
-        this.n = this.ids.length;
-        let t1 = performance.now();
-        this.elapsedMs = t1-t0;
+
+        let measurements: number[] = [];
+        let promises: Promise<number>[] = [];
+        for (let i = 0; i < indicesToFetch.length; i++) {
+            let id = ids[indicesToFetch[i]];
+            promises.push(this.fetchSingleObject(id).then(measurement => measurements.push(measurement)));
+        }
+
+        Promise.all(promises).then(() => {
+            let sum = 0;
+            measurements.forEach((v) => {
+                sum += v;
+            });
+            let averageFetchTime = sum / indicesToFetch.length;
+            this.messages.push(`Fetched ${indicesToFetch.length} times. Average fetch time was ${averageFetchTime}ms`);
+        })
     }
 
-    public getElapsedTime() {
-        return this.elapsedMs;
+    private fetchSingleObject(id: string): Promise<number> {
+        let t0 = performance.now();
+        return this.server.data.get(id).then((result) => {
+            if (result === undefined) {
+                this.messages.push(`Object for id=${id} was undefined.`);
+
+            } else {
+                let t1 = performance.now();
+                return t1 - t0;
+            }
+        })
+    }
+
+    private measureIndexedDbSize() {
+        let usedMb = 0;
+        let grantedMb = 0;
+        let self = this;
+        (<any>navigator).webkitTemporaryStorage.queryUsageAndQuota(
+            (usedBytes, grantedBytes) => {
+                self.messages.push(`IndexedDb usage ${Math.round((usedBytes / 1024) / 1024)}MB / ${Math.round((grantedBytes / 1024) / 1024)}MB`)
+            },
+            (e) => { this.messages.push('Unable to read quota information'); }
+        );
+    }
+
+    private addObjects(numObjects: number): Promise<string[]> {
+        this.messages.push(`Adding ${numObjects} objects`);
+        let ids: string[] = [];
+        let t0 = performance.now();
+        let promises: Promise<any>[] = [];
+
+        for (let i = 0; i < numObjects; i++) {
+            let obj = this.getUniqueObject();
+            ids.push(obj.id);
+            promises.push(this.server.data.update(obj));
+        }
+        
+        return Promise.all(promises).then(() => {
+            let t1 = performance.now();
+            this.messages.push(`Adding ${numObjects} took ${t1 - t0}ms.`)
+            return ids;
+        });
+    }
+
+    public clearDatabase() {
+        this.messages.push("Clearing database.");
+        this.server.data.clear();
     }
 
     private openConnection = (): Promise<boolean> => {
@@ -43,7 +145,7 @@ export class ComponentService {
             server: 'my-app',
             version: 1,
             schema: {
-                testdata: {
+                data: {
                     key: { keyPath: 'id' },
                 }
             }
