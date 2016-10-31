@@ -1,3 +1,4 @@
 .DS_Store
 choresapp/node_modules
 IndexedDbPerformance/node_modules
+node/node_modules
