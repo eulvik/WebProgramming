@@ -1,3 +1,5 @@
 .DS_Store
 choresapp/node_modules
 IndexedDbPerformance/node_modules
+/ReactJS/ReactJS/bin
+*.suo
