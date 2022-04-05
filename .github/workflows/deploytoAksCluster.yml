@@ -24,15 +24,15 @@ jobs:
     
     - name: Create namespace
       run: |
-        namespacePresent=`kubectl get namespace | grep eiriktestclustera48c | wc -l`
+        namespacePresent=`kubectl get namespace | grep eiriktestclusterapp-ns | wc -l`
         if [ $namespacePresent -eq 0 ]
         then
-            echo `kubectl create namespace eiriktestclustera48c`
+            echo `kubectl create namespace eiriktestclusterapp-ns`
         fi
 
     - uses: azure/k8s-create-secret@v1
       with:
-        namespace: eiriktestclustera48c
+        namespace: eiriktestclusterapp-ns
         container-registry-url: eirikcontainerregistry.azurecr.io
         container-registry-username: ${{ secrets.acr_eirikcontainerregistry_username }}
         container-registry-password: ${{ secrets.acr_eirikcontainerregistry_password }}
@@ -40,7 +40,7 @@ jobs:
        
     - uses: azure/k8s-deploy@v1.2
       with:
-        namespace: eiriktestclustera48c
+        namespace: eiriktestclusterapp-ns
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
