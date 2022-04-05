@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ContainerApi.csproj", "ContainerApi/"]
 RUN dotnet restore "ContainerApi/ContainerApi.csproj"
-COPY . .
+COPY [".", "ContainerApi/"]
 WORKDIR "/src/ContainerApi"
 RUN dotnet build "ContainerApi.csproj" -c Release -o /app/build
 
