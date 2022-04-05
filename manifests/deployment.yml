@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "eiriktestcluster-e161"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "eiriktestcluster-e161"
+  template:
+    metadata:
+      labels:
+        app: "eiriktestcluster-e161"
+    spec:
+      containers:
+        - name: "eiriktestcluster-e161"
+          image: "eirikcontainerregistry.azurecr.io/eiriktestcluster"
+          ports:
+          - containerPort: 80
