@@ -12,10 +12,10 @@ spec:
       labels:
         app: curlpod
     spec:
-      volumes:
-      - name: secret-volume
-        secret:
-          secretName: nginxsecret
+#      volumes:
+#      - name: secret-volume
+#        secret:
+#          secretName: nginxsecret
       containers:
       - name: curlpod
         command:
@@ -23,6 +23,6 @@ spec:
         - -c
         - while true; do sleep 1; done
         image: radial/busyboxplus:curl
-        volumeMounts:
-        - mountPath: /etc/nginx/ssl
-          name: secret-volume
+#        volumeMounts:
+#        - mountPath: /etc/nginx/ssl
+#          name: secret-volume
