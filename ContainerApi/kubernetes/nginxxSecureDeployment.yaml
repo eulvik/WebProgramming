@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cl-nginx
+  labels:
+    run: cl-nginx
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    protocol: TCP
+    name: https
+  selector:
+    run: cl-nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cl-nginx
+spec:
+  selector:
+    matchLabels:
+      run: cl-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: cl-nginx
+    spec:
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: nginxsecret
+      - name: configmap-volume
+        configMap:
+          name: nginxconfigmap
+      containers:
+      - name: nginxhttps
+        image: bprashanth/nginxhttps:1.0
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/ssl
+          name: secret-volume
+        - mountPath: /etc/nginx/conf.d
+          name: configmap-volume

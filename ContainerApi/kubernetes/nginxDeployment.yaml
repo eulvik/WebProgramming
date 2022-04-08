@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cl-nginx
+spec:
+  selector:
+    matchLabels:
+      run: cl-nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: cl-nginx
+    spec:
+      containers:
+      - name: cl-nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+
