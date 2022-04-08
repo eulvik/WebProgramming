@@ -14,7 +14,7 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/ContainerApi/NewContainerApi" -f  "ContainerApi/NewContainerApi/Dockerfile" -t eirikcontainerregistry.azurecr.io/eiriktestcluster2:${{ github.sha }} --label dockerfile-path=ContainerApi/NewContainerApi/Dockerfile
+        docker build "$GITHUB_WORKSPACE/ContainerApi" -f  "ContainerApi/NewContainerApi/Dockerfile" -t eirikcontainerregistry.azurecr.io/eiriktestcluster2:${{ github.sha }} --label dockerfile-path=ContainerApi/NewContainerApi/Dockerfile
         docker push eirikcontainerregistry.azurecr.io/eiriktestcluster2:${{ github.sha }}
     
     - uses: azure/k8s-set-context@v1
