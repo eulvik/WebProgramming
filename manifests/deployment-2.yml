@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "clusterf-b59b"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "clusterf-b59b"
+  template:
+    metadata:
+      labels:
+        app: "clusterf-b59b"
+    spec:
+      containers:
+        - name: "clusterf-b59b"
+          image: "eirikcontainerregistry.azurecr.io/clusterf"
+          ports:
+          - containerPort: 80
